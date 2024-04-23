@@ -112,6 +112,7 @@ public class FCalendario extends JFrame implements ActionListener{
 		boolean imprimir = false;
 		int dia = 1;
 		for(int i=0; i<6; i++) {
+			boolean hayDia = false;
 			for(int j=0; j<7; j++) {
 				if(dia==1 && j==diaDeSemana) {
 					imprimir = true;
@@ -120,6 +121,7 @@ public class FCalendario extends JFrame implements ActionListener{
 					this.bDias[i][j].setEnabled(true);
 					this.bDias[i][j].setText(String.valueOf(dia));
 					dia++;
+					hayDia = true;
 				}else {
 					this.bDias[i][j].setEnabled(false);
 					this.bDias[i][j].setText("");
@@ -128,7 +130,14 @@ public class FCalendario extends JFrame implements ActionListener{
 					imprimir = false;
 				}
 			}
+			if(!hayDia) {
+				for(int j=0; j<7; j++) {
+					this.pMes.remove(this.bDias[i][j]);
+				}
+			}
 		}
-
+		this.pMes.revalidate();
+		this.pMes.repaint();
 	}
+
 }
