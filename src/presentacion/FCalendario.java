@@ -136,8 +136,7 @@ public class FCalendario extends JFrame implements ActionListener{
 				}
 			}
 		}
-		this.pMes.revalidate();
-		this.pMes.repaint();
+		
 	}
 
 }
